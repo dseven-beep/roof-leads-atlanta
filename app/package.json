@@ -1,0 +1,23 @@
+{
+  "name": "atlanta-roof-check",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TCPA-compliant opt-in roofing lead forms for metro Atlanta, plus an admin lead desk and NOAA storm alerts.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "storms": "node scripts/fetch-storm-reports.js",
+    "storms:today": "node scripts/fetch-storm-reports.js --today",
+    "storms:test": "node scripts/fetch-storm-reports.js --date 2025-04-10 --also-wind"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
+  }
+}
