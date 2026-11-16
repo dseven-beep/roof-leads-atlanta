@@ -1,0 +1,31 @@
+# Render Blueprint — deploy with Dashboard: New > Blueprint
+# Docs: https://render.com/docs/infrastructure-as-code
+#        https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: atlanta-roof-check
+    runtime: node
+    plan: free
+    region: virginia
+    rootDir: app
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: RESEND_API_KEY
+        sync: false
+      - key: NOTIFY_EMAIL
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: SUPPORT_EMAIL
+        sync: false
+      - key: COMPANY_NAME
+        value: Atlanta Roof Check
