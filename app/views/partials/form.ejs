@@ -1,0 +1,73 @@
+<form class="lead-form" method="post" action="<%= formAction %>" novalidate>
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <% if (typeof city !== "undefined" && city) { %>
+    <input type="hidden" name="landing_city" value="<%= city.name %>">
+  <% } %>
+
+  <% if (errors && errors.length) { %>
+    <div class="alert" role="alert">
+      <p>Please fix the following:</p>
+      <ul>
+        <% errors.forEach(function (err) { %>
+          <li><%= err %></li>
+        <% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <label>
+    Full name
+    <input type="text" name="name" autocomplete="name" required value="<%= values.name || "" %>">
+  </label>
+  <label>
+    Mobile phone
+    <input type="tel" name="phone" autocomplete="tel" inputmode="tel" required placeholder="(404) 555-0100" value="<%= values.phone || "" %>">
+  </label>
+  <label>
+    Email
+    <input type="email" name="email" autocomplete="email" required value="<%= values.email || "" %>">
+  </label>
+  <label>
+    Property street address
+    <input type="text" name="address" autocomplete="street-address" required value="<%= values.address || "" %>">
+  </label>
+  <div class="row">
+    <label>
+      City
+      <input type="text" name="city" autocomplete="address-level2" required value="<%= values.city || (typeof city !== "undefined" && city ? city.name : "") %>">
+    </label>
+    <label>
+      ZIP
+      <input type="text" name="zip" autocomplete="postal-code" inputmode="numeric" required maxlength="10" value="<%= values.zip || "" %>">
+    </label>
+  </div>
+  <label>
+    What do you need help with?
+    <select name="issue_type" required>
+      <option value="">Select one</option>
+      <% issueTypes.forEach(function (t) { %>
+        <option value="<%= t.value %>" <%= values.issue_type === t.value ? "selected" : "" %>><%= t.label %></option>
+      <% }) %>
+    </select>
+  </label>
+  <label>
+    How urgent is this?
+    <select name="urgency" required>
+      <option value="">Select one</option>
+      <% urgencyOptions.forEach(function (t) { %>
+        <option value="<%= t.value %>" <%= values.urgency === t.value ? "selected" : "" %>><%= t.label %></option>
+      <% }) %>
+    </select>
+  </label>
+
+  <label class="consent">
+    <input type="checkbox" name="consent" value="on" <%= values.consent ? "checked" : "" %>>
+    <span><%= consentText %></span>
+  </label>
+  <p class="fineprint">
+    See our <a href="/privacy">Privacy Policy</a>, <a href="/terms">Terms</a>, and
+    <a href="/partners">how we share requests with one partner roofer</a>.
+    This checkbox is not pre-checked. Checking it is your electronic signature for this consent.
+  </p>
+  <button type="submit">Request my free inspection</button>
+</form>
