@@ -1,0 +1,11 @@
+<%- include("partials/header") %>
+<section class="wrap">
+  <h1>Free roof inspection pages by city</h1>
+  <p>Each page is a local landing page for metro Atlanta. Pick your city to request an inspection.</p>
+  <ul class="city-list two">
+    <% cities.forEach(function (c) { %>
+      <li><a href="/roof-inspection/<%= c.slug %>"><%= c.name %></a> <span class="muted"><%= c.county %> County</span></li>
+    <% }) %>
+  </ul>
+</section>
+<%- include("partials/footer") %>
