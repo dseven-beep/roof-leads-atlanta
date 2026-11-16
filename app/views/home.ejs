@@ -1,0 +1,29 @@
+<%- include("partials/header") %>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Metro Atlanta · opt-in only</p>
+      <h1>Free roof inspection in your city</h1>
+      <p class="lede">Tell us about the leak, storm damage, or aging roof. We send your request to one local partner roofer — not a crowd of callers — and only after you check the consent box.</p>
+      <ul class="bullets">
+        <li>No door-to-door pitch from us. No cold calls from scraped numbers.</li>
+        <li>You choose whether a roofer may contact you.</li>
+        <li>Serving homeowners across the Atlanta metro area.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Request an inspection</h2>
+      <%- include("partials/form", { formAction: "/leads" }) %>
+    </div>
+  </div>
+</section>
+<section class="wrap city-strip">
+  <h2>Popular cities</h2>
+  <ul class="city-list">
+    <% cities.slice(0, 18).forEach(function (c) { %>
+      <li><a href="/roof-inspection/<%= c.slug %>">Free roof inspection in <%= c.name %></a></li>
+    <% }) %>
+  </ul>
+  <p><a href="/cities">See all metro Atlanta cities →</a></p>
+</section>
+<%- include("partials/footer") %>

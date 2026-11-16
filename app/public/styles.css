@@ -1,0 +1,134 @@
+:root {
+  --ink: #142033;
+  --muted: #4b5872;
+  --bg: #f4f1ea;
+  --card: #fffdf8;
+  --accent: #1f5c4d;
+  --accent-2: #c45c26;
+  --line: #d9d2c5;
+  --danger: #8a1f1f;
+  --ok: #1b5e3b;
+  --max: 1100px;
+  font-family: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main { flex: 1; }
+a { color: var(--accent); }
+.wrap { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+.narrow { width: min(720px, calc(100% - 2rem)); padding: 2rem 0 3rem; }
+.muted { color: var(--muted); }
+
+.site-header {
+  background: var(--ink);
+  color: #fff;
+}
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 0;
+}
+.logo { color: #fff; text-decoration: none; font-weight: 700; letter-spacing: 0.01em; }
+.nav { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.nav a, .linkish { color: #e8efe9; text-decoration: none; background: none; border: 0; font: inherit; cursor: pointer; padding: 0; }
+.nav a:hover, .linkish:hover { text-decoration: underline; }
+form.inline { margin: 0; }
+
+.hero { padding: 2rem 0 2.5rem; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 880px) {
+  .hero-grid { grid-template-columns: 1.05fr 0.95fr; align-items: start; }
+}
+.eyebrow { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; color: var(--accent); font-weight: 700; margin-bottom: 0.3rem; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.15; margin: 0 0 0.75rem; }
+h2 { margin-top: 0; }
+.lede { font-size: 1.15rem; color: var(--muted); }
+.bullets { padding-left: 1.1rem; }
+.bullets li { margin: 0.4rem 0; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 10px 30px rgba(20, 32, 51, 0.06);
+}
+.lead-form label, .admin-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-weight: 600;
+  margin: 0 0 0.85rem;
+}
+input, select, button {
+  font: inherit;
+}
+input, select {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7rem 0.75rem;
+  background: #fff;
+  width: 100%;
+}
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+@media (max-width: 520px) { .row { grid-template-columns: 1fr; } }
+.consent {
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 0.7rem !important;
+  font-weight: 500 !important;
+  background: #f7f3ea;
+  border-radius: 10px;
+  padding: 0.85rem;
+}
+.consent input { width: auto; margin-top: 0.25rem; flex: 0 0 auto; }
+.fineprint { font-size: 0.88rem; color: var(--muted); }
+button[type="submit"], .lead-form button {
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.85rem 1.2rem;
+  font-weight: 700;
+  width: 100%;
+  cursor: pointer;
+}
+button[type="submit"]:hover { filter: brightness(1.08); }
+.alert { background: #fdeeee; color: var(--danger); border: 1px solid #efc4c4; border-radius: 10px; padding: 0.8rem 1rem; }
+.ok { background: #e8f6ee; color: var(--ok); border-radius: 10px; padding: 0.6rem 0.8rem; }
+.city-strip { padding: 0 0 3rem; }
+.city-list { display: grid; gap: 0.4rem 1rem; padding-left: 1.1rem; }
+.city-list.two { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); list-style: none; padding: 0; }
+.city-list.two li { padding: 0.35rem 0; border-bottom: 1px solid var(--line); }
+.legal h2 { margin-top: 1.4rem; }
+.site-footer {
+  background: #ebe6dc;
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 1.5rem 0 2rem;
+}
+.lead-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 0 0 1rem;
+}
+.lead-card header { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.admin-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.6rem; align-items: end; }
+.admin-form button { width: auto; padding: 0.65rem 1rem; }

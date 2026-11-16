@@ -1,0 +1,20 @@
+<%- include("partials/header") %>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow"><%= city.name %>, Georgia · <%= city.county %> County</p>
+      <h1>Free roof inspection in <%= city.name %></h1>
+      <p class="lede">If your <%= city.name %> home has a leak, missing shingles, or storm damage, request a no-obligation inspection. We share your request with one local partner roofer after you opt in.</p>
+      <ul class="bullets">
+        <li>Local to <%= city.name %> and nearby <%= city.county %> County neighborhoods.</li>
+        <li>You will not be sold to a list of competing callers from this form.</li>
+        <li>A partner may contact you only with the consent you give below.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Request a free inspection in <%= city.name %></h2>
+      <%- include("partials/form", { formAction: "/roof-inspection/" + city.slug }) %>
+    </div>
+  </div>
+</section>
+<%- include("partials/footer") %>

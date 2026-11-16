@@ -1,0 +1,8 @@
+<%- include("partials/header") %>
+<section class="wrap narrow">
+  <h1>We received your request<%= leadId ? " (#" + leadId + ")" : "" %>.</h1>
+  <p>A local partner roofer should reach out to schedule the inspection using the phone or email you provided. If you asked about an insurance claim, talk with your insurer before authorizing work. A Georgia roofer generally may not negotiate your claim unless they are or employ a licensed public adjuster.</p>
+  <p>Changed your mind? Email <a href="mailto:<%= supportEmail %>"><%= supportEmail %></a> and we will note that you do not want to be contacted.</p>
+  <p><a href="/">Back to the home page</a></p>
+</section>
+<%- include("partials/footer") %>
