@@ -1,0 +1,15 @@
+# Secrets and local-only files — never commit these
+.env
+**/.env
+node_modules/
+**/node_modules/
+*.db
+*.db-shm
+*.db-wal
+**/*.db
+**/*.db-shm
+**/*.db-wal
+data/local.db
+app/data/local.db
+*.log
+.DS_Store
