@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="/admin"><%= companyName %> admin</a>
+      <nav class="nav">
+        <a href="/admin/leads.csv">Export CSV</a>
+        <form method="post" action="/admin/logout" class="inline">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button class="linkish" type="submit">Log out</button>
+        </form>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <h1>Leads</h1>
+    <% if (saved) { %><p class="ok">Saved.</p><% } %>
+    <p class="muted">Storage: <%= storage.driver %><%= storage.sqlitePath ? " (" + storage.sqlitePath + ")" : "" %>. <%= leads.length %> lead(s).</p>
+    <% if (!leads.length) { %>
+      <p>No leads yet.</p>
+    <% } %>
+    <% leads.forEach(function (lead) { %>
+      <article class="lead-card">
+        <header>
+          <strong>#<%= lead.id %> · <%= lead.name %></strong>
+          <span class="muted"><%= lead.created_at %></span>
+        </header>
+        <p>
+          <%= lead.phone %> · <%= lead.email %><br>
+          <%= lead.address %>, <%= lead.city %>, GA <%= lead.zip %><br>
+          <%= lead.issue_type %> · <%= lead.urgency %>
+          <% if (lead.landing_city) { %> · landing: <%= lead.landing_city %><% } %>
+        </p>
+        <p class="muted">Consent <%= lead.consent_version %><% if (lead.ip) { %> · IP <%= lead.ip %><% } %></p>
+        <form method="post" action="/admin/leads/<%= lead.id %>" class="admin-form">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <label>Status
+            <select name="status">
+              <% ["new","contacted","sold","unqualified","refunded"].forEach(function (s) { %>
+                <option value="<%= s %>" <%= lead.status === s ? "selected" : "" %>><%= s %></option>
+              <% }) %>
+            </select>
+          </label>
+          <label>Sold to roofer
+            <input type="text" name="sold_to_roofer" value="<%= lead.sold_to_roofer || "" %>" placeholder="Company name">
+          </label>
+          <label>Sale price
+            <input type="text" name="sale_price" value="<%= lead.sale_price || "" %>" placeholder="125.00">
+          </label>
+          <label>Notes
+            <input type="text" name="notes" value="<%= lead.notes || "" %>">
+          </label>
+          <button type="submit">Save</button>
+        </form>
+      </article>
+    <% }) %>
+  </main>
+</body>
+</html>
